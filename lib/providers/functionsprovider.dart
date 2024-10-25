@@ -38,5 +38,6 @@ class FunctionsProvider extends ChangeNotifier {
     } catch (e) {
       print('exception ${e.toString()}');
     }
+    notifyListeners();
   }
 }

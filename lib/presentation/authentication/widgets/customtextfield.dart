@@ -11,13 +11,14 @@ class CustomTextField extends StatelessWidget {
     required this.controller,
     required this.validator,
     this.keyboardType,
-    required this.obscureText,
+    required this.obscureText, this.onTap,
   });
   final String hintText;
   final String? Function(String?)? validator;
   final TextEditingController controller;
   final TextInputType? keyboardType;
   final bool obscureText;
+  final void Function()? onTap;
 
   @override
   Widget build(BuildContext context) {
@@ -25,6 +26,7 @@ class CustomTextField extends StatelessWidget {
       builder: (context, functionsProvider, child) => TextFormField(
         autovalidateMode: AutovalidateMode.onUserInteraction,
         controller: controller,
+        onTap: onTap,
         keyboardType: keyboardType,
         obscureText: obscureText && !functionsProvider.isPasswordvisible,
         textInputAction: TextInputAction.next,

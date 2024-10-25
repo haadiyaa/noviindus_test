@@ -9,7 +9,7 @@ class MyTextStyles {
   );
   static const TextStyle inputPlaceholderStyle = TextStyle(
     fontSize: 16,
-    color: AppColors.greytext,
+    color: AppColors.grey,
   );
   static const TextStyle sort = TextStyle(
     fontSize: 16,
