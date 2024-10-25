@@ -11,6 +11,11 @@ class MyTextStyles {
     fontSize: 16,
     color: AppColors.greytext,
   );
+  static const TextStyle sort = TextStyle(
+    fontSize: 16,
+    color: AppColors.black,
+    fontWeight: FontWeight.w500,
+  );
   static const TextStyle hintStyle = TextStyle(
     fontSize: 15,
     fontWeight: FontWeight.w300,
@@ -20,5 +25,19 @@ class MyTextStyles {
     fontSize: 15,
     fontWeight: FontWeight.bold,
     color: AppColors.white,
+  );
+  static const TextStyle nameText = TextStyle(
+    fontSize: 18,
+    fontWeight: FontWeight.w500,
+  );
+  static const TextStyle subNameText = TextStyle(
+    fontSize: 18,
+    fontWeight: FontWeight.w300,
+    color: AppColors.blue,
+  );
+  static const TextStyle dateText = TextStyle(
+    fontSize: 14,
+    fontWeight: FontWeight.w400,
+    color: AppColors.grey,
   );
 }

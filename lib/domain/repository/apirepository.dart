@@ -30,7 +30,7 @@ class ApiRepository {
       "Authorization": "Bearer $token",
     };
     final response = await http.get(
-      Uri.parse('${ApiKeys.baseUrl}${ApiKeys.login}'),
+      Uri.parse('${ApiKeys.baseUrl}${ApiKeys.patientList}'),
       headers: headers,
     );
     return response;

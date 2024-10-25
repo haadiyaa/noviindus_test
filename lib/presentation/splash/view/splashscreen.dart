@@ -2,6 +2,8 @@ import 'package:another_flutter_splash_screen/another_flutter_splash_screen.dart
 import 'package:flutter/material.dart';
 import 'package:noviindus_test/core/constants.dart';
 import 'package:noviindus_test/presentation/authentication/view/loginpage.dart';
+import 'package:noviindus_test/presentation/homepage/view/homepage.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class SplashScreen extends StatelessWidget {
   const SplashScreen({super.key});
@@ -23,9 +25,17 @@ class SplashScreen extends StatelessWidget {
             ),
           ),
         ),
-        onAnimationEnd: () {
-          Navigator.pushReplacement(
-              context, MaterialPageRoute(builder: (_) => LoginPage()));
+        onAnimationEnd: () async {
+          final sharedPref = await SharedPreferences.getInstance();
+          String? token = sharedPref.getString(Constants.token);
+          print('token $token');
+          if (token != null) {
+            Navigator.pushReplacement(
+                context, MaterialPageRoute(builder: (_) => const HomePage()));
+          } else {
+            Navigator.pushReplacement(
+                context, MaterialPageRoute(builder: (_) => LoginPage()));
+          }
         },
       ),
     );

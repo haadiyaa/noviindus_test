@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:noviindus_test/core/appcolors.dart';
 import 'package:noviindus_test/presentation/splash/view/splashscreen.dart';
 import 'package:noviindus_test/providers/authprovider.dart';
 import 'package:noviindus_test/providers/functionsprovider.dart';
@@ -25,6 +26,10 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         theme: ThemeData(
           fontFamily: 'Poppins',
+          scaffoldBackgroundColor: AppColors.white,
+          appBarTheme: const AppBarTheme(
+            color: AppColors.white,
+          ),
         ),
         debugShowCheckedModeBanner: false,
         home: const SplashScreen(),
