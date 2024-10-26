@@ -40,6 +40,7 @@ class _RegisterPageState extends State<RegisterPage> {
   final TextEditingController treatNameCtrl = TextEditingController();
   int male = 0;
   int female = 0;
+  late String date;
 
   @override
   Widget build(BuildContext context) {
@@ -480,7 +481,7 @@ class _RegisterPageState extends State<RegisterPage> {
                                       discount_amount: discAmtCtrl.text.trim(),
                                       advance_amount: advAmtCtrl.text.trim(),
                                       balance_amount: balAmtCtrl.text.trim(),
-                                      date_nd_time: treatDateCtrl.text.trim(),
+                                      date_nd_time: date,
                                       id: "",
                                       male: male.toString(),
                                       female: female.toString(),
@@ -505,7 +506,27 @@ class _RegisterPageState extends State<RegisterPage> {
                                         // treatTimeCtrl.clear();
                                         // treatNameCtrl.clear();
                                       },
-                                    );
+                                    ).then((_) {
+                                      // Navigator.pop(context);
+                                      value.generateInvoicePdf(
+                                        name: nameCtrl.text.trim(),
+                                        excecutive: 'Exec 1',
+                                        payment: totalAmtCtrl.text.trim(),
+                                        phone: wNumberCtrl.text.trim(),
+                                        address: addressCtrl.text.trim(),
+                                        total_amount: totalAmtCtrl.text.trim(),
+                                        discount_amount:
+                                            discAmtCtrl.text.trim(),
+                                        advance_amount: advAmtCtrl.text.trim(),
+                                        balance_amount: balAmtCtrl.text.trim(),
+                                        date_nd_time: date,
+                                        id: "",
+                                        male: male.toString(),
+                                        female: female.toString(),
+                                        branch: '166',
+                                        treatments: '100',
+                                      );
+                                    });
                                   } else {
                                     ScaffoldMessenger.of(context).showSnackBar(
                                         SnackBar(
@@ -541,6 +562,7 @@ class _RegisterPageState extends State<RegisterPage> {
       String formatDate = DateFormat('yyyy-MM-dd').format(pickedDate);
       setState(() {
         treatDateCtrl.text = formatDate;
+        date = picked.toString();
       });
     }
   }
