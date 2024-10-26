@@ -507,7 +507,7 @@ class _RegisterPageState extends State<RegisterPage> {
                                         // treatNameCtrl.clear();
                                       },
                                     ).then((_) {
-                                      // Navigator.pop(context);
+                                      Navigator.pop(context);
                                       value.generateInvoicePdf(
                                         name: nameCtrl.text.trim(),
                                         excecutive: 'Exec 1',
