@@ -25,12 +25,15 @@ class _HomePageState extends State<HomePage> {
     final functionsProvider =
         Provider.of<FunctionsProvider>(context, listen: false);
     functionsProvider.getPatientList();
+    functionsProvider.getTreatments();
+    functionsProvider.getBranch();
   }
 
   Future<void> onRefresh() async {
     final functionsProvider =
         Provider.of<FunctionsProvider>(context, listen: false);
     await functionsProvider.getPatientList();
+    
   }
 
   @override
