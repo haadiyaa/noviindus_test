@@ -4,6 +4,7 @@ import 'package:noviindus_test/core/appcolors.dart';
 import 'package:noviindus_test/core/constants.dart';
 import 'package:noviindus_test/core/mytextstyles.dart';
 import 'package:noviindus_test/presentation/authentication/widgets/customtextfield.dart';
+import 'package:noviindus_test/presentation/registerpage/widgets/treatmentalert.dart';
 
 class RegisterPage extends StatefulWidget {
   RegisterPage({super.key});
@@ -34,6 +35,9 @@ class _RegisterPageState extends State<RegisterPage> {
   final TextEditingController treatDateCtrl = TextEditingController();
 
   final TextEditingController treatTimeCtrl = TextEditingController();
+  final TextEditingController treatNameCtrl = TextEditingController();
+  int male = 0;
+  int female = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -158,6 +162,108 @@ class _RegisterPageState extends State<RegisterPage> {
                   Constants.height10,
                   Constants.height10,
                   //====treatement
+                  treatNameCtrl.text.isEmpty
+                      ? const SizedBox()
+                      : Container(
+                          padding: const EdgeInsets.only(
+                              left: 15, top: 15, bottom: 15, right: 10),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10),
+                            color: AppColors.lightgrey,
+                          ),
+                          child: Row(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              const Text(
+                                '1.  ',
+                                style: MyTextStyles.nameText,
+                              ),
+                              Expanded(
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    const Text(
+                                      'data',
+                                      style: MyTextStyles.nameText,
+                                    ),
+                                    Constants.height10,
+                                    Row(
+                                      children: [
+                                        const Text(
+                                          'Male',
+                                          style: MyTextStyles.genderText,
+                                        ),
+                                        Constants.width5,
+                                        Container(
+                                          padding: const EdgeInsets.symmetric(
+                                            horizontal: 13,
+                                            vertical: 1,
+                                          ),
+                                          decoration: BoxDecoration(
+                                            borderRadius:
+                                                BorderRadius.circular(5),
+                                            border: Border.all(
+                                              color: AppColors.black,
+                                              width: 0.5,
+                                            ),
+                                          ),
+                                          child: const Text(
+                                            '2',
+                                            style: MyTextStyles.genderText,
+                                          ),
+                                        ),
+                                        Constants.width15,
+                                        const Text(
+                                          'Female',
+                                          style: MyTextStyles.genderText,
+                                        ),
+                                        Constants.width5,
+                                        Container(
+                                          padding: const EdgeInsets.symmetric(
+                                            horizontal: 13,
+                                            vertical: 1,
+                                          ),
+                                          decoration: BoxDecoration(
+                                            borderRadius:
+                                                BorderRadius.circular(5),
+                                            border: Border.all(
+                                              color: AppColors.black,
+                                              width: 0.5,
+                                            ),
+                                          ),
+                                          child: const Text(
+                                            '2',
+                                            style: MyTextStyles.genderText,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              Column(
+                                children: [
+                                  IconButton(
+                                    padding: const EdgeInsets.all(0),
+                                    onPressed: () {},
+                                    icon: const Icon(
+                                      Icons.cancel,
+                                      color: AppColors.red,
+                                    ),
+                                  ),
+                                  IconButton(
+                                    onPressed: () {},
+                                    icon: const Icon(
+                                      Icons.edit,
+                                      color: AppColors.green,
+                                    ),
+                                  ),
+                                ],
+                              )
+                            ],
+                          ),
+                        ),
+                  Constants.height10,
                   SizedBox(
                     height: 45,
                     width: double.infinity,
@@ -170,7 +276,16 @@ class _RegisterPageState extends State<RegisterPage> {
                           borderRadius: BorderRadius.circular(8),
                         ),
                       ),
-                      onPressed: () {},
+                      onPressed: treatNameCtrl.text.isNotEmpty
+                          ? null
+                          : () {
+                              showDialog(
+                                context: context,
+                                builder: (context) => TreatmentAlert(
+                                  treatNameCtrl: treatNameCtrl,
+                                ),
+                              );
+                            },
                       child: const Text('Add Treatment'),
                     ),
                   ),

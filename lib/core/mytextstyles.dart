@@ -35,6 +35,11 @@ class MyTextStyles {
     fontWeight: FontWeight.w300,
     color: AppColors.blue,
   );
+  static const TextStyle genderText = TextStyle(
+    fontSize: 16,
+    fontWeight: FontWeight.w400,
+    color: AppColors.green,
+  );
   static const TextStyle dateText = TextStyle(
     fontSize: 14,
     fontWeight: FontWeight.w400,

@@ -38,7 +38,7 @@ class PatientTile extends StatelessWidget {
                     ),
                     Text(
                       patientListModel
-                          .patient[index].patientdetailsSet[0].treatmentName!,
+                          .patient[index].patientdetailsSet[0].treatmentName??'',
                       style: MyTextStyles.subNameText,
                     ),
                     Constants.height10,
